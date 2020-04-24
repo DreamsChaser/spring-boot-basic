@@ -7,7 +7,7 @@
     <groupId>org.dream.chaser.leon</groupId>
     <artifactId>spring-boot-basic</artifactId>
     <packaging>pom</packaging>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
     <modules>
         <module>spring-boot-basic-web</module>
     </modules>
@@ -30,7 +30,6 @@
     </dependencies>
 
     <properties>
-        <docker.image.prefix>spring-boot-basic</docker.image.prefix>
         <jar.real.path>spring-boot-basic-web</jar.real.path>
     </properties>
 
@@ -55,13 +54,22 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <!-- docker plugin插件 -->
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.0.0</version>
+                <!-- docker镜像相关配置 -->
                 <configuration>
-                    <imageName>${docker.image.prefix}:${project.version}</imageName>
+                    <!-- 镜像名 -->
+                    <imageName>${project.build.finalName}</imageName>
+                    <!-- 镜像tag -->
+                    <imageTags>
+                        <imageTag>${project.version}</imageTag>
+                    </imageTags>
+                    <!-- 镜像FROM -->
                     <baseImage>openjdk</baseImage>
+                    <!-- 容器启动后执行的命令 -->
                     <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
                     <resources>
                         <resource>
