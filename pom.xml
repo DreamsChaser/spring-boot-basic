@@ -31,6 +31,7 @@
 
     <properties>
         <docker.image.prefix>spring-boot-basic</docker.image.prefix>
+        <jar.real.path>spring-boot-basic-web</jar.real.path>
     </properties>
 
     <repositories>
@@ -65,7 +66,7 @@
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
-                            <directory>${project.build.directory}</directory>
+                            <directory>${project.build.directory}/${jar.real.path}</directory>
                             <include>${project.build.finalName}.jar</include>
                         </resource>
                     </resources>
