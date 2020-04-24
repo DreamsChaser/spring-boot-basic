@@ -54,23 +54,20 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!-- docker plugin插件 -->
+            <!-- docker plugin -->
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.0.0</version>
-                <!-- docker镜像相关配置 -->
+                <!-- docker config -->
                 <configuration>
-                    <!-- 镜像名 -->
+                    <!-- image name -->
                     <imageName>${project.build.finalName}</imageName>
-                    <!-- 镜像tag -->
+                    <!-- image tag -->
                     <imageTags>
                         <imageTag>${project.version}</imageTag>
                     </imageTags>
-                    <!-- 镜像FROM -->
-                    <baseImage>openjdk</baseImage>
-                    <!-- 容器启动后执行的命令 -->
-                    <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+                    <dockerDirectory>${project.basedir}</dockerDirectory>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
