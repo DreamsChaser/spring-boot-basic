@@ -22,4 +22,43 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <finalName>spring-boot-basic</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- docker plugin -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <!-- docker config -->
+                <configuration>
+                    <!-- image name -->
+                    <imageName>${project.build.finalName}</imageName>
+
+                    <!-- Dockerfile配置路径
+                    <dockerDirectory>${project.basedir}</dockerDirectory>
+                    -->
+
+                    <!-- 非Dockerfile配置-->
+                    <workdir>/tmp</workdir>
+                    <baseImage>openjdk</baseImage>
+                    <entryPoint>["java", "-jar", "/spring-boot-basic.jar"]</entryPoint>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

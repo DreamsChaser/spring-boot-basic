@@ -47,36 +47,5 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <build>
-        <finalName>spring-boot-basic</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <!-- docker plugin -->
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <!-- docker config -->
-                <configuration>
-                    <!-- image name -->
-                    <imageName>${project.build.finalName}</imageName>
-                    <!-- image tag -->
-                    <imageTags>
-                        <imageTag>${project.version}</imageTag>
-                    </imageTags>
-                    <dockerDirectory>${project.basedir}</dockerDirectory>
-                    <resources>
-                        <resource>
-                            <targetPath>/</targetPath>
-                            <directory>${project.basedir}/${jar.real.path}/target</directory>
-                            <include>${project.build.finalName}.jar</include>
-                        </resource>
-                    </resources>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+
 </project>
