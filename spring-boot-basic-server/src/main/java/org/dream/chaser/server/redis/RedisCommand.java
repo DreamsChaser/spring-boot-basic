@@ -15,8 +15,8 @@ public class RedisCommand {
     @Autowired
     RedisTemplate<String,String> redisTemplate;
 
-    public long set(String key,String value) {
-        return redisTemplate.opsForSet().add(key,value);
+    public void set(String key,String value) {
+        redisTemplate.opsForValue().set(key,value);
     }
 
     public String get(String key) {

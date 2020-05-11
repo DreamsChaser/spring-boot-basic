@@ -19,10 +19,7 @@ public class RedisController {
     @RequestMapping(value = "/set", method = RequestMethod.GET)
     @ResponseBody
     public void set(@RequestParam(value = "key") String key, @RequestParam(value = "value") String value) {
-        long command = redisCommand.set(key,value);
-        if (command < 1) {
-            System.out.println("error");
-        }
+        redisCommand.set(key,value);
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
