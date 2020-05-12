@@ -20,6 +20,12 @@ public class RedisCommand {
     }
 
     public String get(String key) {
-        return redisTemplate.opsForValue().get(key);
+        String value = "";
+        try {
+            value = redisTemplate.opsForValue().get(key);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return value;
     }
 }
