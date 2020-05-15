@@ -1,5 +1,4 @@
 /**
- * ymm56.com Inc.
  * Copyright (c) 2013-2018 All Rights Reserved.
  */
 package org.dream.chaser.web;
