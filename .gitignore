@@ -1,2 +1,10 @@
 # Project exclude paths
-/spring-boot-basic-web/target/
+.*
+!.gitignore
+target
+build
+out
+*~
+*.orig
+*.iml
+application.pid
